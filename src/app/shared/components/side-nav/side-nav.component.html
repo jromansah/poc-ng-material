@@ -1,0 +1,26 @@
+<header>
+    <mat-toolbar color="primary" class="sidebar-toolbar">
+        <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="sidebar-app-name">POC MFO theming</h1>
+    </mat-toolbar>
+</header>
+
+<mat-drawer-container autosize>
+    <mat-drawer #drawer opened="false" mode="side">
+        <mat-form-field appearance="fill">
+            <mat-label>Kies thema</mat-label>
+            <mat-select [(value)]="selectedTheme" (selectionChange)="themeChange.emit(selectedTheme)">
+                <mat-option *ngFor="let t of theme" [value]="t.value">
+                    {{t.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-drawer>
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>

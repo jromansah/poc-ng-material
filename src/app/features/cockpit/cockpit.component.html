@@ -1,0 +1,19 @@
+<div class="cockpit">
+    <table mat-table #table  class="w-100" [dataSource]="dataSource"  cdkDropListLockAxis="x" cdkDropListOrientation="horizontal" cdkDropList
+    (cdkDropListDropped)="dropListDropped($event)">
+    <ng-container *ngFor="let disCol of columns; let colIndex = index" matColumnDef="{{disCol.field}}">
+        <th mat-header-cell layout-align="start center" class="centered" *matHeaderCellDef cdkDropList
+            cdkDropListLockAxis="x" cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropListDropped($event)"
+            cdkDrag (cdkDragStarted)="dragStarted($event, colIndex)"
+            [cdkDragData]="{name: disCol.field, columIndex: colIndex}">
+            {{disCol.field}}
+        </th>
+        <td mat-cell layout-align="start center" class="centered" *matCellDef="let row "> {{row[disCol.field]}}
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="pointer-events: none;">
+    </tr>
+</table>
+</div>

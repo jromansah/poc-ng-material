@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Import library functions for theme creation.
+@import "~@angular/material/theming";
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define the application's custom theme
+$primary: mat-palette($mat-blue);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+// Regular (light theme)
+// Include theme styles for Angular Material components
+// and include theme styles for your custom components.
+@include angular-material-theme($theme);
+
+// Define the application's dark theme
+$primary-dark: mat-palette($mat-deep-purple);
+$accent-dark: mat-palette($mat-green, A200, A100, A400);
+
+// Use mat-dark-theme instead of mat-light-theme
+$dark-theme: mat-dark-theme($primary-dark, $accent-dark);
+
+// Define the application's green theme
+$primary-green: mat-palette($mat-green);
+$accent-green: mat-palette($mat-green, A200, A100, A400);
+
+// Use mat-dark-theme instead of mat-light-theme
+$green-theme: mat-light-theme($primary-green, $accent-green);
+
+// Define the application's yellow theme
+$primary-yellow: mat-palette($mat-yellow);
+$accent-yellow: mat-palette($mat-yellow, A200, A100, A400);
+
+// Use mat-dark-theme instead of mat-light-theme
+$yellow-theme: mat-light-theme($primary-yellow, $accent-yellow);
+
+.dark {
+  @include angular-material-theme($dark-theme);
+}
+
+.green {
+  @include angular-material-theme($green-theme);
+}
+
+.yellow {
+  @include angular-material-theme($yellow-theme);
+}
